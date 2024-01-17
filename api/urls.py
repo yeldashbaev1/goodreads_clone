@@ -1,8 +1,11 @@
 from django.urls import path
+from rest_framework.routers import DefaultRouter
 
-from api.views import BookReviewDetailAPIView, BookListAPIView
+# from api.views import BookReviewDetailAPIView, BookReviewsAPIView
+from api.views import BookReviewViewSet
 
-urlpatterns = [
-    path('reviews/', BookListAPIView.as_view(), name='review-list'),
-    path('reviews/<int:id>/', BookReviewDetailAPIView.as_view(), name='review-detail')
-]
+app_name = "api"
+
+router = DefaultRouter()
+router.register('reviews', BookReviewViewSet, basename='review')
+urlpatterns = router.urls

@@ -79,3 +79,5 @@ class ProfileUpdateView(LoginRequiredMixin, View):
             return redirect("users:profile")
         else:
             return render(request, "users/profile_edit.html", {"form": user_update_form})
+
+
